@@ -18,6 +18,7 @@ interface FeatureStepsProps {
   title?: string
   autoPlayInterval?: number
   imageHeight?: string
+  baseImageHeight?: number
 }
 
 export function FeatureSteps({
@@ -25,11 +26,12 @@ export function FeatureSteps({
   className,
   title = "How to get Started",
   autoPlayInterval = 3000,
-  imageHeight = "h-[400px]",
+  imageHeight,
+  baseImageHeight = 80,
 }: FeatureStepsProps) {
   const [currentFeature, setCurrentFeature] = useState(0)
   const [progress, setProgress] = useState(0)
-
+  
   useEffect(() => {
     const timer = setInterval(() => {
       if (progress < 100) {
@@ -89,8 +91,13 @@ export function FeatureSteps({
 
           <div
             className={cn(
-              "order-1 md:order-2 relative h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden rounded-lg"
+              "order-1 md:order-2 relative overflow-hidden rounded-lg",
+              imageHeight || `h-[${Math.min(Math.max(features.length * 80, 300), 600)}px]`,
+              !imageHeight && "md:min-h-[500px]"
             )}
+            style={!imageHeight ? {
+              height: `${Math.min(Math.max(features.length * 80, 300), 600)}px`
+            } : {}}
           >
             <AnimatePresence mode="wait">
               {features.map(
@@ -104,13 +111,18 @@ export function FeatureSteps({
                       exit={{ y: -100, opacity: 0, rotateX: 20 }}
                       transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
-                      <Image
-                        src={feature.image}
-                        alt={feature.step}
-                        className="w-full h-full object-cover transition-transform transform"
-                        width={1000}
-                        height={500}
-                      />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Image
+                          src={feature.image}
+                          alt={feature.step}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover"
+                          style={{
+                            objectPosition: "center center"
+                          }}
+                        />
+                      </div>
                       <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-background via-background/50 to-transparent" />
                     </motion.div>
                   ),
