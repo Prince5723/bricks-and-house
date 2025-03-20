@@ -45,10 +45,10 @@ interface Navbar1Props {
     url: string;
   }[];
   auth?: {
-    login: {
-      text: string;
-      url: string;
-    };
+    // login: {
+    //   text: string;
+    //   url: string;
+    // };
     signup: {
       text: string;
       url: string;
@@ -78,8 +78,8 @@ const Navbar1 = ({
     { name: "Sitemap", url: "#" },
   ],
   auth = {
-    login: { text: "Log in", url: "#" },
-    signup: { text: "Sign up", url: "#" },
+    // login: { text: "Log into your account", url: "#" },
+    signup: { text: "Request A Free Consultation", url: "#" },
   },
 }: Navbar1Props) => {
   return (
@@ -101,7 +101,7 @@ const Navbar1 = ({
           </div>
           <div className="flex gap-2">
             <Button asChild variant="outline" size="sm">
-              <a href={auth.login.url}>{auth.login.text}</a>
+              {/* <a href={auth.login.url}>{auth.login.text}</a> */}
             </Button>
             <Button asChild size="sm">
               <a href={auth.signup.url}>{auth.signup.text}</a>
@@ -154,7 +154,7 @@ const Navbar1 = ({
                   </div>
                   <div className="flex flex-col gap-3">
                     <Button asChild variant="outline">
-                      <a href={auth.login.url}>{auth.login.text}</a>
+                      {/* <a href={auth.login.url}>{auth.login.text}</a> */}
                     </Button>
                     <Button asChild>
                       <a href={auth.signup.url}>{auth.signup.text}</a>

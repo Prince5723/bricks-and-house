@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
         hostname: "example.com",
       },
     ],
-    domains: ["aceternity.com", "images.unsplash.com", "assets.aceternity.com", "plus.unsplash.com", "res.cloudinary.com"],
+    domains: ["aceternity.com", "images.unsplash.com", "assets.aceternity.com", "plus.unsplash.com", "res.cloudinary.com", "ui.aceternity.com"],
   },
 };
 
