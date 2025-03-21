@@ -4,6 +4,8 @@ import {HeroSection} from "@/components/hero";
 import {Services} from "@/components/services";
 import {InfiniteMovingCardsDemo} from "@/components/infinite-moving-cards";
 import {Faq} from "@/components/faq";
+import {Footerdemo} from "@/components/ui/footer-section";
+import {Pricing} from "@/components/pricing-section";
 
 export default function Home() {
   return (
@@ -13,8 +15,10 @@ export default function Home() {
     <HeroSection/>
     <HowItWorks/>
     <Services/>
+    <Pricing/>
     <InfiniteMovingCardsDemo/>
     <Faq/>
+    <Footerdemo/>
     </div>
     </>
 
