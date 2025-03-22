@@ -6,11 +6,13 @@ import {InfiniteMovingCardsDemo} from "@/components/infinite-moving-cards";
 import {Faq} from "@/components/faq";
 import {Footerdemo} from "@/components/ui/footer-section";
 import {Pricing} from "@/components/pricing-section";
+import {PopupForm} from "@/components/pop-up-form";
 
 export default function Home() {
   return (
     <>
     <div className="">
+      <PopupForm/>
     <Navbar1/>
     <HeroSection/>
     <HowItWorks/>
