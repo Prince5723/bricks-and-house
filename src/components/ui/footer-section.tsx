@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -16,7 +17,6 @@ import { Facebook, Instagram, Linkedin, Moon, Send, Sun, Twitter } from "lucide-
 
 function Footerdemo() {
   const [isDarkMode, setIsDarkMode] = React.useState(false)
-  const [isChatOpen, setIsChatOpen] = React.useState(false)
 
   React.useEffect(() => {
     if (isDarkMode) {
@@ -35,92 +35,99 @@ function Footerdemo() {
             <p className="mb-6 text-muted-foreground">
               Build your dream home with our expert construction services. From concept to completion, we bring your vision to life.
             </p>
-
             <div className="absolute -right-4 top-0 h-24 w-24 rounded-full bg-primary/10 blur-2xl" />
           </div>
+
           <div>
             <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
             <nav className="space-y-2 text-sm">
-              <a href="#" className="block transition-colors hover:text-primary">
+              <Link href="/" className="block transition-colors hover:text-primary">
                 Home
-              </a>
-              <a href="#" className="block transition-colors hover:text-primary">
+              </Link>
+              <Link href="/projects" className="block transition-colors hover:text-primary">
                 Our Projects
-              </a>
-              <a href="#" className="block transition-colors hover:text-primary">
+              </Link>
+              <Link href="/estimator" className="block transition-colors hover:text-primary">
                 Cost Estimator
-              </a>
-              <a href="#" className="block transition-colors hover:text-primary">
+              </Link>
+              <Link href="/floor-plans" className="block transition-colors hover:text-primary">
                 Floor Plans
-              </a>
-              <a href="#" className="block transition-colors hover:text-primary">
+              </Link>
+              <Link href="/about" className="block transition-colors hover:text-primary">
                 About Us
-              </a>
-              <a href="#" className="block transition-colors hover:text-primary">
+              </Link>
+              <Link href="/contact" className="block transition-colors hover:text-primary">
                 Contact Us
-              </a>
+              </Link>
             </nav>
           </div>
+
           <div>
             <h3 className="mb-4 text-lg font-semibold">Contact Us</h3>
             <address className="space-y-2 text-sm not-italic">
-              <p>E-2/101, Bhatia Towers </p>
+              <p>E-2/101, Bhatia Towers</p>
               <p>Alaknanda Shopping Complex</p>
               <p>Phone: +91 88603 31115</p>
               <p>New Delhi-110019</p>
-
-
             </address>
           </div>
+
           <div className="relative">
             <h3 className="mb-4 text-lg font-semibold">Follow Us</h3>
             <div className="mb-6 flex space-x-4">
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon" className="rounded-full">
-                      <Facebook className="h-4 w-4" />
-                      <span className="sr-only">Facebook</span>
-                    </Button>
+                    <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="icon" className="rounded-full" aria-label="Facebook" title="Facebook">
+                        <Facebook className="h-4 w-4" />
+                      </Button>
+                    </Link>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Follow us on Facebook</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
+
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon" className="rounded-full">
-                      <Twitter className="h-4 w-4" />
-                      <span className="sr-only">Twitter</span>
-                    </Button>
+                    <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="icon" className="rounded-full" aria-label="Twitter" title="Twitter">
+                        <Twitter className="h-4 w-4" />
+                      </Button>
+                    </Link>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Follow us on Twitter</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
+
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon" className="rounded-full">
-                      <Instagram className="h-4 w-4" />
-                      <span className="sr-only">Instagram</span>
-                    </Button>
+                    <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="icon" className="rounded-full" aria-label="Instagram" title="Instagram">
+                        <Instagram className="h-4 w-4" />
+                      </Button>
+                    </Link>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Follow us on Instagram</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
+
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon" className="rounded-full">
-                      <Linkedin className="h-4 w-4" />
-                      <span className="sr-only">LinkedIn</span>
-                    </Button>
+                    <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="icon" className="rounded-full" aria-label="LinkedIn" title="LinkedIn">
+                        <Linkedin className="h-4 w-4" />
+                      </Button>
+                    </Link>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Connect with us on LinkedIn</p>
@@ -128,12 +135,14 @@ function Footerdemo() {
                 </Tooltip>
               </TooltipProvider>
             </div>
+
             <div className="flex items-center space-x-2">
               <Sun className="h-4 w-4" />
               <Switch
                 id="dark-mode"
                 checked={isDarkMode}
                 onCheckedChange={setIsDarkMode}
+                aria-label="Toggle dark mode"
               />
               <Moon className="h-4 w-4" />
               <Label htmlFor="dark-mode" className="sr-only">
@@ -142,20 +151,21 @@ function Footerdemo() {
             </div>
           </div>
         </div>
+
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-center md:flex-row">
           <p className="text-sm text-muted-foreground">
             © 2025 Bricks And House. All rights reserved.
           </p>
           <nav className="flex gap-4 text-sm">
-            <a href="#" className="transition-colors hover:text-primary">
+            <Link href="/privacy-policy" className="transition-colors hover:text-primary">
               Privacy Policy
-            </a>
-            <a href="#" className="transition-colors hover:text-primary">
+            </Link>
+            <Link href="/terms-of-service" className="transition-colors hover:text-primary">
               Terms of Service
-            </a>
-            <a href="#" className="transition-colors hover:text-primary">
+            </Link>
+            <Link href="/cookie-settings" className="transition-colors hover:text-primary">
               Cookie Settings
-            </a>
+            </Link>
           </nav>
         </div>
       </div>
