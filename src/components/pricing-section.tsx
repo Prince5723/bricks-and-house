@@ -269,18 +269,19 @@ const pricingData = {
 
 export function Pricing() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-50 to-gray-100 py-20 px-4">
+    <div className="min-h-screen  mt-12 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-            Choose Your Perfect Package
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Select from our carefully curated packages designed to meet your needs
-          </p>
-        </div>
+      <div className="px-8">
+        <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
+        Pricing
+        </h4>
+
+        <p className="text-sm lg:text-base max-w-2xl my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+        We offer transparent and competitive pricing tailored to your project’s needs. Get the best value for your investment without compromising on quality or service.
+        </p>
+      </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
           <PricingCard {...pricingData.lilly} />
           <PricingCard {...pricingData.rose} />
           <PricingCard {...pricingData.orchid} />

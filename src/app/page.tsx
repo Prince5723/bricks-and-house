@@ -7,17 +7,19 @@ import {Faq} from "@/components/faq";
 import {Footerdemo} from "@/components/ui/footer-section";
 import {Pricing} from "@/components/pricing-section";
 import {PopupForm} from "@/components/pop-up-form";
+import {ProjectsCards} from "@/components/projects-card";
 
 export default function Home() {
   return (
     <>
     <div className="">
-      <PopupForm/>
+    <PopupForm/>
     <Navbar1/>
     <HeroSection/>
     <HowItWorks/>
     <Services/>
     <Pricing/>
+    <ProjectsCards/>
     <InfiniteMovingCardsDemo/>
     <Faq/>
     <Footerdemo/>
