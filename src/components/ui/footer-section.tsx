@@ -16,18 +16,9 @@ import {
 import { Facebook, Instagram, Linkedin, Moon, Send, Sun, Twitter } from "lucide-react"
 
 function Footerdemo() {
-  const [isDarkMode, setIsDarkMode] = React.useState(false)
-
-  React.useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-    }
-  }, [isDarkMode])
 
   return (
-    <footer className="relative mt-12 border-t bg-background text-foreground transition-colors duration-300">
+    <footer className="relative mt-12 border-t bg-blue-50 text-foreground transition-colors duration-300">
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="relative">
@@ -134,20 +125,6 @@ function Footerdemo() {
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-            </div>
-
-            <div className="flex items-center space-x-2">
-              <Sun className="h-4 w-4" />
-              <Switch
-                id="dark-mode"
-                checked={isDarkMode}
-                onCheckedChange={setIsDarkMode}
-                aria-label="Toggle dark mode"
-              />
-              <Moon className="h-4 w-4" />
-              <Label htmlFor="dark-mode" className="sr-only">
-                Toggle dark mode
-              </Label>
             </div>
           </div>
         </div>

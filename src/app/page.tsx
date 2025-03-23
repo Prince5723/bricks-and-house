@@ -12,7 +12,7 @@ import {ProjectsCards} from "@/components/projects-card";
 export default function Home() {
   return (
     <>
-    <div className="">
+    <div className="bg-blue-50">
     <PopupForm/>
     <Navbar1/>
     <HeroSection/>

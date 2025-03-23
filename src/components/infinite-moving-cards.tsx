@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 
 export function InfiniteMovingCardsDemo() {
     return (
-        <div className="">
+        <div className="bg-blue-50">
             <div className="px-8 mt-12">
                 <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
                     Hear from our customers
@@ -14,7 +14,7 @@ export function InfiniteMovingCardsDemo() {
                     With over 800 satisfied clients, we take pride in delivering exceptional quality and reliability. Their trust and positive experiences inspire us to continue building with excellence.
                 </p>
             </div>
-            <div className="mt-16 rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+            <div className="mt-16 rounded-md flex flex-col antialiased bg-blue-50 dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
                 <InfiniteMovingCards
                     items={testimonials}
                     direction="right"
@@ -62,6 +62,3 @@ const testimonials = [
         title: "UP",
     },
 ];
-
-
-

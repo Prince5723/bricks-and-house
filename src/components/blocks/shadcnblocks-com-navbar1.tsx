@@ -1,14 +1,7 @@
-import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
+import { Book, Menu } from "lucide-react";
 import * as React from 'react';
 import Link from "next/link";  // Import Next.js Link
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -24,6 +17,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 
 interface MenuItem {
   title: string;
@@ -79,7 +73,7 @@ const Navbar1 = ({
   },
 }: Navbar1Props) => {
   return (
-    <section className="px-8 py-4">
+    <section className="px-8 py-4 bg-blue-50">
       <div className="container">
         {/* Desktop Navbar */}
         <nav className="hidden justify-between lg:flex">
@@ -97,7 +91,7 @@ const Navbar1 = ({
             </div>
           </div>
           <div className="flex gap-2">
-            <Button asChild>
+            <Button asChild className="bg-black text-white hover:bg-gray-800">
               <Link href={auth.signup.url}>{auth.signup.text}</Link>
             </Button>
           </div>
@@ -112,25 +106,27 @@ const Navbar1 = ({
             </Link>
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon">
+                <Button variant="outline" size="icon" className="bg-blue-50">
                   <Menu className="size-4" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="overflow-y-auto">
+              <SheetContent className="overflow-y-auto bg-blue-50">
                 <SheetHeader>
                   <SheetTitle>
                     <Link href={logo.url} className="flex items-center gap-2">
                       <img src={logo.src} className="w-8" alt={logo.alt} />
-                      <span className="text-lg font-semibold">
-                        {logo.title}
-                      </span>
+                      <span className="text-lg font-semibold">{logo.title}</span>
                     </Link>
                   </SheetTitle>
                 </SheetHeader>
                 <div className="my-6 flex flex-col gap-6">
                   <div className="flex flex-col gap-4">
                     {menu.map((item, index) => (
-                      <Link key={index} href={item.url} className="font-semibold">
+                      <Link
+                        key={index}
+                        href={item.url}
+                        className="font-semibold hover:bg-blue-100 rounded-md px-4 py-2"
+                      >
                         {item.title}
                       </Link>
                     ))}
@@ -141,7 +137,7 @@ const Navbar1 = ({
                         <Link
                           key={idx}
                           href={link.url}
-                          className="inline-flex h-10 items-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-accent-foreground"
+                          className="inline-flex h-10 items-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-blue-100 hover:text-accent-foreground"
                         >
                           {link.name}
                         </Link>
@@ -149,7 +145,7 @@ const Navbar1 = ({
                     </div>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <Button asChild>
+                    <Button asChild className="bg-black text-white hover:bg-gray-800">
                       <Link href={auth.signup.url}>{auth.signup.text}</Link>
                     </Button>
                   </div>
@@ -163,13 +159,12 @@ const Navbar1 = ({
   );
 };
 
-// Updated renderMenuItem function with Next.js Link
 const renderMenuItem = (item: MenuItem) => {
   return (
     <NavigationMenuItem key={item.title}>
       <Link
         href={item.url}
-        className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-md font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-accent-foreground"
+        className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-blue-50 px-4 py-2 text-md font-medium text-muted-foreground transition-colors hover:bg-blue-100 hover:text-accent-foreground"
       >
         {item.title}
       </Link>
