@@ -5,7 +5,7 @@ import {ProjectsCards} from "@/components/projects-card";
 export default function Home() {
   return (
     <>
-    <div className="">
+    <div className="bg-blue-50">
     <Navbar1/>
     <ProjectsCards/>
     <Footerdemo/>

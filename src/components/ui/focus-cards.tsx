@@ -55,6 +55,7 @@ export function FocusCards({ cards }: { cards: Card[] }) {
 
   return (
     <>
+    <div className="bg-blue-50">
      <div className="px-8 mt-12">
         <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
         Our Projects
@@ -74,6 +75,7 @@ export function FocusCards({ cards }: { cards: Card[] }) {
           setHovered={setHovered}
         />
       ))}
+    </div>
     </div>
     </>
   );

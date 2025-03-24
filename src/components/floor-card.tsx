@@ -2,7 +2,6 @@
 import React from "react";
 import { GradientCard } from "./ui/background-gradient";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 const products = [
   {
@@ -12,7 +11,7 @@ const products = [
       "The Air Jordan 4 Retro Reimagined Bred will release on Saturday, February 17, 2024. Your best opportunity to get these right now is by entering",
     image: "https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zmxvb3JzJTIwcGxhbnMlMjBjb25zdHJ1Y3Rpb258ZW58MHx8MHx8fDA%3D",
     // price: "$100",
-    link: "/products/air-jordan-4", // Unique link
+    link: "https://buildahomes.com/public/floorplans/240424061944_20240212%20GROUND%20FLOOR%20PLAN%2007%20TH%204-Model-2.pdf", // Unique link
   },
   {
     id: 2,
@@ -21,7 +20,7 @@ const products = [
       "The Nike Air Force 1 Low White is a timeless classic. Its all-white leather design makes it a staple in sneaker culture.",
     image: "https://images.unsplash.com/photo-1626885930974-4b69aa21bbf9?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGZsb29ycyUyMHBsYW5zJTIwY29uc3RydWN0aW9ufGVufDB8fDB8fHww",
     // price: "$90",
-    link: "/products/nike-air-force-1", // Unique link
+    link: "https://buildahomes.com/public/floorplans/240424062037_20240212%20SECOND%20FLOOR%20PLAN%2007%20TH%204-Model-1.pdf", // Unique link
   },
   {
     id: 3,
@@ -30,7 +29,7 @@ const products = [
       "The Adidas Yeezy Boost 350 V2 Bone offers a sleek design and comfortable fit, making it a must-have for sneaker enthusiasts.",
     image: "https://images.unsplash.com/photo-1516880711640-ef7db81be3e1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGZsb29ycyUyMHBsYW5zJTIwY29uc3RydWN0aW9ufGVufDB8fDB8fHww",
     // price: "$220",
-    link: "/products/yeezy-boost-350", // Unique link
+    link: "https://buildahomes.com/public/floorplans/240424062150_20240212%20FIRST%20FLOOR%20PLAN%2007%20TH%204-Model-1.pdf", // Unique link
   },
   {
     id: 4,
@@ -39,16 +38,16 @@ const products = [
       "The New Balance 550 White Grey offers a clean, vintage-inspired look perfect for everyday wear.",
     image: "https://images.unsplash.com/photo-1575971637203-d6255d9947a9?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTl8fGZsb29ycyUyMHBsYW5zJTIwY29uc3RydWN0aW9ufGVufDB8fDB8fHww",
     // price: "$110",
-    link: "/products/new-balance-550", // Unique link
+    link: "https://buildahomes.com/public/floorplans/240424062255_20240212%20THIRD%20FLOOR%20PLAN%2007%20TH%204-Model-1.pdf", // Unique link
   },
 ];
 
 export function FloorCards() {
-  const router = useRouter(); // Using Next.js router for navigation
 
-  const handleButtonClick = (link: any) => {
-    router.push(link); // Navigate to the unique product link
-  };
+  const handleButtonClick = (link: string) => {
+    window.open(link, '_blank'); // Opens the link in a new tab
+};
+
 
   return (
     <>
