@@ -74,7 +74,7 @@ const Faq3 = ({
   supportHeading = "Need More Assistance?",
   supportDescription = "Our dedicated support team is here to help you with any queries related to our construction services. Get in touch for personalized assistance.",
   supportButtonText = "Contact Support",
-  supportButtonUrl = "https://www.yourconstructionwebsite.com",
+  supportButtonUrl = "/contact",
 }: Faq3Props) => {
 
   return (

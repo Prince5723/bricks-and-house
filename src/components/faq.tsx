@@ -46,7 +46,7 @@ const demoData = {
   supportDescription:
     "Can't find the answer you're looking for? Our support team is here to help with any such questions or concerns.",
   supportButtonText: "Contact Support",
-  supportButtonUrl: "https://shadcnblocks.com",
+  supportButtonUrl: "/contact",
 };
 
 function Faq() {

@@ -160,7 +160,7 @@ function CostEstimator() {
           <div className="flex items-center justify-center mb-6">
             <Building2 className="w-14 h-14 text-indigo-600" />
           </div>
-          <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-500 mb-4">
+          <h1 className="text-5xl font-bold bg-clip-text text-black bg-gradient-to-r from-indigo-600 to-violet-500 mb-4">
             Construction Cost Estimator
           </h1>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
