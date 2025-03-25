@@ -1,9 +1,13 @@
+'use client';
 import { MoveRight, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
+
 
 function Hero() {
+  const router = useRouter();
   return (
     <div className="w-full py-12 lg:py-8">
       <div className="container mx-auto">
@@ -24,10 +28,10 @@ function Hero() {
               </p>
             </div>
             <div className="flex flex-row gap-4">
-            <Button size="lg" className="gap-4" variant="outline">
+            <Button size="lg" className="gap-4 cursor-pointer" variant="outline" onClick={() => router.push("/login")}>
                 Log in here <MoveRight className="w-4 h-4" />
               </Button>
-              <Button size="lg" className="gap-4" >
+              <Button size="lg" className="gap-4 cursor-pointer" onClick={() => router.push("/contact")} >
                  Free Consultatoin <PhoneCall className="w-4 h-4" />
               </Button>
               

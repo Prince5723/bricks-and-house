@@ -69,7 +69,7 @@ const Navbar1 = ({
     { name: "Sitemap", url: "/sitemap" },
   ],
   auth = {
-    signup: { text: "Request A Free Consultation", url: "/signup" },
+    signup: { text: "Request A Free Consultation", url: "/contact" },
   },
 }: Navbar1Props) => {
   return (
