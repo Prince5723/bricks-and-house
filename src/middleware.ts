@@ -21,14 +21,6 @@ export async function middleware(request: NextRequest) {
 
   let token = request.cookies.get('token')?.value;
 
-  // If cookie not found and it's an API, check Authorization header
-  if (!token && pathname.startsWith('/api')) {
-    const authHeader = request.headers.get('authorization');
-    if (authHeader?.startsWith('Bearer ')) {
-      token = authHeader.substring(7);
-    }
-  }
-
   if (!token) {
     return pathname.startsWith('/api')
       ? NextResponse.json({ success: false, message: 'Authentication required' }, { status: 401 })

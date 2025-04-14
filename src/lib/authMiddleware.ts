@@ -1,18 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyToken, TokenPayload } from '../utils/jwt';
+import { cookies } from 'next/headers';
 
 export interface AuthRequest extends NextRequest {
   user?: TokenPayload;
 }
 
 export async function authenticateUser(req: AuthRequest): Promise<TokenPayload | null> {
-  const authHeader = req.headers.get('authorization');
-  
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+  const cookieStore = await cookies();
+  const token = cookieStore.get('token')?.value;
+
+  if (!token) {
     return null;
   }
   
-  const token = authHeader.substring(7);
   return await verifyToken(token);
 }
 

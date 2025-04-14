@@ -22,7 +22,6 @@ export default function LoginPage() {
 
       if (res.data.success) {
         const token = res.data.token;
-        localStorage.setItem('token', 'Bearer ' + token);
         const role = token ? JSON.parse(atob(res.data.token.split('.')[1]))?.role : null;
         router.push(`/dashboard/${role}`);
       } else {
