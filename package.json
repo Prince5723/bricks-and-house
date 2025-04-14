@@ -24,7 +24,9 @@
     "clsx": "^2.1.1",
     "cobe": "^0.6.3",
     "framer-motion": "^12.5.0",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.483.0",
+    "mongoose": "^8.13.2",
     "next": "15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -33,6 +35,8 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^20",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
