@@ -13,7 +13,7 @@ export async function authenticateUser(req: AuthRequest): Promise<TokenPayload |
   }
   
   const token = authHeader.substring(7);
-  return verifyToken(token);
+  return await verifyToken(token);
 }
 
 export function requireAuth(handler: Function) {

@@ -21,7 +21,9 @@ export default function LoginPage() {
       const res = await axios.post('/api/auth/login', { email, password });
 
       if (res.data.success) {
-        const role = res.data.token ? JSON.parse(atob(res.data.token.split('.')[1]))?.role : null;
+        const token = res.data.token;
+        localStorage.setItem('token', 'Bearer ' + token);
+        const role = token ? JSON.parse(atob(res.data.token.split('.')[1]))?.role : null;
         router.push(`/dashboard/${role}`);
       } else {
         setError(res.data.message || 'Login failed');

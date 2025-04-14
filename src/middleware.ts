@@ -7,57 +7,56 @@ const publicPaths = ['/api/auth/login'];
 
 // Role-based access rules
 const rolePathMapping = {
-  'admin': ['/api/admin'],
-  'engineer': ['/api/engineer'],
-  'client': ['/api/client']
+  'admin': ['/api/admin', '/dashboard/admin'],
+  'engineer': ['/api/engineer', '/dashboard/engineer'],
+  'client': ['/api/client', '/dashboard/client']
 };
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  
-  // Skip authentication for public paths
+
   if (publicPaths.some(path => pathname.startsWith(path))) {
     return NextResponse.next();
   }
-  
-  // Check for auth token
-  const authHeader = request.headers.get('authorization');
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return NextResponse.json(
-      { success: false, message: 'Authentication required' },
-      { status: 401 }
-    );
+
+  let token = request.cookies.get('token')?.value;
+
+  // If cookie not found and it's an API, check Authorization header
+  if (!token && pathname.startsWith('/api')) {
+    const authHeader = request.headers.get('authorization');
+    if (authHeader?.startsWith('Bearer ')) {
+      token = authHeader.substring(7);
+    }
   }
-  
-  const token = authHeader.substring(7);
-  const payload = verifyToken(token);
+
+  if (!token) {
+    return pathname.startsWith('/api')
+      ? NextResponse.json({ success: false, message: 'Authentication required' }, { status: 401 })
+      : NextResponse.redirect(new URL('/login', request.url));
+  }
+
+  const payload = await verifyToken(token);
   
   if (!payload) {
-    return NextResponse.json(
-      { success: false, message: 'Invalid or expired token' },
-      { status: 401 }
-    );
+    return pathname.startsWith('/api')
+      ? NextResponse.json({ success: false, message: 'Invalid token' }, { status: 401 })
+      : NextResponse.redirect(new URL('/login', request.url));
   }
-  
-  // Role-based access control
+
   const userRole = payload.role;
   const allowedPaths = rolePathMapping[userRole as keyof typeof rolePathMapping] || [];
-  
-  // Check if user has access to the requested path
+
   const hasAccess = allowedPaths.some(path => pathname.startsWith(path));
-  
   if (!hasAccess) {
-    return NextResponse.json(
-      { success: false, message: 'Access denied' },
-      { status: 403 }
-    );
+    return pathname.startsWith('/api')
+      ? NextResponse.json({ success: false, message: 'Access denied' }, { status: 403 })
+      : NextResponse.redirect(new URL('/unauthorized', request.url));
   }
-  
-  // Proceed with the request
+
   return NextResponse.next();
 }
 
 // Configure middleware to run on specific paths
 export const config = {
-  matcher: ['/api/:path*'],
+  matcher: ['/api/:path*', '/dashboard/admin/:path*', '/dashboard/engineer/:path*', '/dashboard/client/:path*'],
 };

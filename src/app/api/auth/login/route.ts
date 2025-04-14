@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import  dbConnect  from "@/lib/mongodb";
 import User from "@/models/User";
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import {generateToken} from "@/utils/jwt";
 
 export async function POST(req: NextRequest) {
   try {
@@ -25,18 +26,18 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, message: "Invalid credentials." }, { status: 401 });
     }
 
-    const token = jwt.sign(
-      {
-        userId: user._id,
-        role: user.role,
-        name: user.name,
-        email: user.email,
-      },
-      process.env.JWT_SECRET!,
-      { expiresIn: "7d" }
-    );
+    const token = await generateToken(user);
 
     const response = NextResponse.json({ success: true, message: "Login successful", token });
+
+    // Set cookie for server-side access
+    response.cookies.set("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+      path: "/",
+    });
 
     return response;
   } catch (err) {
