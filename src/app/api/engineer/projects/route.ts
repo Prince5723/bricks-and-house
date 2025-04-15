@@ -7,6 +7,7 @@ async function handler(req: AuthRequest) {
   try {
     await dbConnect();
     const engineerId = req.user?.userId;
+    console.log("engineerId:", engineerId);
     
     // Get all projects assigned to the engineer
     const projects = await Project.find({ engineerId })
