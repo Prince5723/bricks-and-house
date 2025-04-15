@@ -7,8 +7,8 @@ const publicPaths = ['/api/auth/login'];
 
 // Role-based access rules
 const rolePathMapping = {
-  'admin': ['/api/admin', '/dashboard/admin'],
-  'engineer': ['/api/engineer', '/dashboard/engineer'],
+  'admin': ['/api/users', '/api/admin', '/dashboard/admin'],
+  'engineer': ['/api/users','/api/engineer', '/dashboard/engineer'],
   'client': ['/api/client', '/dashboard/client']
 };
 
@@ -20,6 +20,7 @@ export async function middleware(request: NextRequest) {
   }
 
   let token = request.cookies.get('token')?.value;
+  console.log(token);
 
   if (!token) {
     return pathname.startsWith('/api')
@@ -28,6 +29,7 @@ export async function middleware(request: NextRequest) {
   }
 
   const payload = await verifyToken(token);
+  console.log(payload);
   
   if (!payload) {
     return pathname.startsWith('/api')
