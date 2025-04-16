@@ -18,13 +18,14 @@ import { toast } from "sonner";
 import {
   Briefcase,
   TicketIcon,
-  RefreshCw
+  RefreshCw,
+  Ticket
 } from "lucide-react";
 import ProjectsList from "@/components/engineer/projects";
 import TicketForm from "@/components/engineer/raise-ticket";
-import UpdateProject from "@/components/engineer/update-project"; // Import the new component
+import UpdateProject from "@/components/engineer/update-project";
+import TicketInfo from "@/components/engineer/ticket-info";
 
-// Match your API response structure
 interface Project {
   _id: string;
   siteAddress: string;
@@ -52,7 +53,7 @@ export default function EngineerDashboard() {
     }
   };
 
-  const handleTicketSubmit = async (ticketData:any) => {
+  const handleTicketSubmit = async (ticketData: any) => {
     setIsLoading(true);
     try {
       await axios.post('/api/engineer/tickets', ticketData);
@@ -68,50 +69,55 @@ export default function EngineerDashboard() {
 
   return (
     <div className='bg-blue-50 h-screen'>
-    <Card className="w-full max-w-4xl mx-auto ">
-      <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center text-blue-600">
-          Engineer Dashboard
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Tabs defaultValue="projects" className="space-y-4">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="projects" className="flex items-center gap-2">
-              <Briefcase className="w-4 h-4" />
-              My Projects
-            </TabsTrigger>
-            <TabsTrigger value="ticket" className="flex items-center gap-2">
-              <TicketIcon className="w-4 h-4" />
-              Raise a Ticket
-            </TabsTrigger>
-            <TabsTrigger value="update" className="flex items-center gap-2">
-              <RefreshCw className="w-4 h-4" />
-              Update Projects
-            </TabsTrigger>
-          </TabsList>
+      <Card className="w-full max-w-4xl mx-auto">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-center text-blue-600">
+            Engineer Dashboard
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Tabs defaultValue="projects" className="space-y-4">
+            <TabsList className="grid w-full grid-cols-4">
+              <TabsTrigger value="projects" className="flex items-center gap-2">
+                <Briefcase className="w-4 h-4" />
+                My Projects
+              </TabsTrigger>
+              <TabsTrigger value="ticket" className="flex items-center gap-2">
+                <TicketIcon className="w-4 h-4" />
+                Raise a Ticket
+              </TabsTrigger>
+              <TabsTrigger value="update" className="flex items-center gap-2">
+                <RefreshCw className="w-4 h-4" />
+                Update Projects
+              </TabsTrigger>
+              <TabsTrigger value="ticket-info" className="flex items-center gap-2">
+                <Ticket className="w-4 h-4" />
+                Ticket Info
+              </TabsTrigger>
+            </TabsList>
 
-          {/* My Projects Tab */}
-          <TabsContent value="projects">
-            <ProjectsList projects={projects} />
-          </TabsContent>
+            <TabsContent value="projects">
+              <ProjectsList projects={projects} />
+            </TabsContent>
 
-          {/* Raise Ticket Tab */}
-          <TabsContent value="ticket">
-            <TicketForm 
-              projects={projects} 
-              onSubmit={handleTicketSubmit} 
-              isLoading={isLoading} 
-            />
-          </TabsContent>
+            <TabsContent value="ticket">
+              <TicketForm 
+                projects={projects} 
+                onSubmit={handleTicketSubmit} 
+                isLoading={isLoading} 
+              />
+            </TabsContent>
 
-          {/* Update Projects Tab - Now using the new component */}
-          <TabsContent value="update">
-            <UpdateProject projects={projects} />
-          </TabsContent>
-        </Tabs>
-      </CardContent>
-    </Card>
+            <TabsContent value="update">
+              <UpdateProject projects={projects} />
+            </TabsContent>
+
+            <TabsContent value="ticket-info">
+              <TicketInfo />
+            </TabsContent>
+          </Tabs>
+        </CardContent>
+      </Card>
     </div>
   );
 }
