@@ -62,12 +62,6 @@ const Navbar1 = ({
     { title: "About Us", url: "/about" },
     { title: "Contact Us", url: "/contact" },
   ],
-  mobileExtraLinks = [
-    { name: "Press", url: "/press" },
-    { name: "Contact", url: "/contact" },
-    { name: "Imprint", url: "/imprint" },
-    { name: "Sitemap", url: "/sitemap" },
-  ],
   auth = {
     signup: { text: "Request A Free Consultation", url: "/contact" },
   },
@@ -130,19 +124,6 @@ const Navbar1 = ({
                         {item.title}
                       </Link>
                     ))}
-                  </div>
-                  <div className="border-t py-4">
-                    <div className="grid grid-cols-2 justify-start">
-                      {mobileExtraLinks.map((link, idx) => (
-                        <Link
-                          key={idx}
-                          href={link.url}
-                          className="inline-flex h-10 items-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-blue-100 hover:text-accent-foreground"
-                        >
-                          {link.name}
-                        </Link>
-                      ))}
-                    </div>
                   </div>
                   <div className="flex flex-col gap-3">
                     <Button asChild className="bg-black text-white hover:bg-gray-800">
