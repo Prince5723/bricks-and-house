@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 function Hero() {
   const router = useRouter();
   return (
-    <div className="w-full py-12 lg:py-8">
+    <div className="w-full py-12 px-12 lg:py-8">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 gap-8 items-center md:grid-cols-2">
           {/* Left Section */}
